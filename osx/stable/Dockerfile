@@ -15,4 +15,4 @@ WORKDIR /osxcross/target/bin
 RUN bash -c 'for file in ./*; do ln -s file /bin/$file; done'
 WORKDIR /
 
-CMD ["/bin/sh"]
+CMD ["/bin/bash"]
