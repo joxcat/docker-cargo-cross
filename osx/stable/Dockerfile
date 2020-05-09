@@ -13,5 +13,6 @@ RUN UNATTENDED=yes OSX_VERSION_MIN=10.7 ./build.sh
 
 WORKDIR /
 RUN echo 'export PATH="/osxcross/target/bin:$PATH"' >> .profile
+RUN . .profile
 
 CMD ["/bin/sh"]
