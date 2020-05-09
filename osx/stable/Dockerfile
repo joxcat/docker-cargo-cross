@@ -1,10 +1,9 @@
-FROM rust:latest
+FROM rust:1.43.1
 
 RUN apt update
 RUN apt install -y clang gcc g++ cmake zlib1g-dev libmpc-dev libmpfr-dev libgmp-dev
 
 RUN rustup target add x86_64-apple-darwin
-RUN rustup default x86_64-apple-darwin
 
 RUN git clone https://github.com/tpoechtrager/osxcross
 WORKDIR /osxcross
