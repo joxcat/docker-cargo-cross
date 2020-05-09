@@ -11,8 +11,8 @@ RUN wget -nc https://s3.dockerproject.org/darwin/v2/MacOSX10.10.sdk.tar.xz
 RUN mv MacOSX10.10.sdk.tar.xz tarballs/
 RUN UNATTENDED=yes OSX_VERSION_MIN=10.7 ./build.sh
 
+WORKDIR /osxcross/target/bin
+RUN bash -c 'for file in ./*; do ln -s file /bin/$file; done'
 WORKDIR /
-RUN echo 'export PATH="/osxcross/target/bin:$PATH"' >> .profile
-RUN . .profile
 
 CMD ["/bin/sh"]
