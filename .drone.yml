@@ -1,0 +1,87 @@
+---
+kind: pipeline
+type: docker
+name: docker-osx
+
+steps:
+  - name: stable
+    image: plugins/docker
+    settings:
+      repo: blackksoulls/drone-cargo-cross
+      username:
+          from_secret: docker_username
+      password:
+          from_secret: docker_password
+      target: stable
+      tags:
+          - osx
+          - osx-stable
+      dockerfile: osx/Dockerfile
+  - name: beta
+    image: plugins/docker
+    settings:
+      repo: blackksoulls/drone-cargo-cross
+      username:
+          from_secret: docker_username
+      password:
+          from_secret: docker_password
+      target: beta
+      tags:
+          - osx-beta
+      dockerfile: osx/Dockerfile
+  - name: nightly
+    image: plugins/docker
+    settings:
+      repo: blackksoulls/drone-cargo-cross
+      username:
+          from_secret: docker_username
+      password:
+          from_secret: docker_password
+      target: nightly
+      tags:
+          - osx-nightly
+      dockerfile: osx/Dockerfile
+
+---
+kind: pipeline
+type: docker
+name: docker-win
+
+steps:
+  - name: stable
+    image: plugins/docker
+    settings:
+      repo: blackksoulls/drone-cargo-cross
+      username:
+          from_secret: docker_username
+      password:
+          from_secret: docker_password
+      target: stable
+      tags:
+          - win
+          - win-stable
+      dockerfile: windows/Dockerfile
+  - name: beta
+    image: plugins/docker
+    settings:
+      repo: blackksoulls/drone-cargo-cross
+      username:
+          from_secret: docker_username
+      password:
+          from_secret: docker_password
+      target: beta
+      tags:
+          - win-beta
+      dockerfile: windows/Dockerfile
+  - name: nightly
+    image: plugins/docker
+    settings:
+      repo: blackksoulls/drone-cargo-cross
+      username:
+          from_secret: docker_username
+      password:
+          from_secret: docker_password
+      target: nightly
+      tags:
+          - win-nightly
+      dockerfile: windows/Dockerfile
