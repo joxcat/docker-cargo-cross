@@ -1,6 +1,6 @@
 FROM debian:stretch as osxcross
 RUN apt update
-RUN apt install -y git wget clang gcc g++ cmake zlib1g-dev libmpc-dev libmpfr-dev libgmp-dev
+RUN apt install -y git wget clang gcc g++ cmake zlib1g-dev libmpc-dev libmpfr-dev libgmp-dev libxml2-dev
 RUN git clone https://github.com/tpoechtrager/osxcross
 WORKDIR /osxcross
 RUN wget -nc https://s3.dockerproject.org/darwin/v2/MacOSX10.10.sdk.tar.xz
