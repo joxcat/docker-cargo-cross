@@ -8,6 +8,8 @@ RUN mv MacOSX10.10.sdk.tar.xz tarballs/
 RUN UNATTENDED=yes OSX_VERSION_MIN=10.7 ./build.sh
 
 FROM rust:latest as stable
+RUN apt update
+RUN apt install -y clang
 RUN rustup target add x86_64-apple-darwin
 COPY --from=osxcross /osxcross /osxcross
 WORKDIR /osxcross/target/bin
@@ -16,6 +18,8 @@ WORKDIR /
 CMD ["/bin/bash"]
 
 FROM instrumentisto/rust:beta as beta
+RUN apt update
+RUN apt install -y clang
 RUN rustup target add x86_64-apple-darwin
 COPY --from=osxcross /osxcross /osxcross
 WORKDIR /osxcross/target/bin
@@ -24,6 +28,8 @@ WORKDIR /
 CMD ["/bin/bash"]
 
 FROM instrumentisto/rust:nightly as nightly
+RUN apt update
+RUN apt install -y clang
 RUN rustup target add x86_64-apple-darwin
 COPY --from=osxcross /osxcross /osxcross
 WORKDIR /osxcross/target/bin
