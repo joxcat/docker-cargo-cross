@@ -17,6 +17,7 @@ steps:
           - osx
           - osx-stable
       dockerfile: osx/Dockerfile
+      purge: false
   - name: beta
     image: plugins/docker
     settings:
@@ -29,6 +30,7 @@ steps:
       tags:
           - osx-beta
       dockerfile: osx/Dockerfile
+      purge: false
   - name: nightly
     image: plugins/docker
     settings:
@@ -41,6 +43,7 @@ steps:
       tags:
           - osx-nightly
       dockerfile: osx/Dockerfile
+      purge: true
 
 ---
 kind: pipeline
@@ -61,6 +64,7 @@ steps:
           - win
           - win-stable
       dockerfile: windows/Dockerfile
+      purge: false
   - name: beta
     image: plugins/docker
     settings:
@@ -73,6 +77,7 @@ steps:
       tags:
           - win-beta
       dockerfile: windows/Dockerfile
+      purge: false
   - name: nightly
     image: plugins/docker
     settings:
@@ -85,3 +90,4 @@ steps:
       tags:
           - win-nightly
       dockerfile: windows/Dockerfile
+      purge: true
