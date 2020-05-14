@@ -12,8 +12,6 @@ RUN apt update
 RUN apt install -y clang
 RUN rustup target add x86_64-apple-darwin
 COPY --from=osxcross /osxcross /osxcross
-WORKDIR /osxcross/target/bin
-RUN bash -c 'for file in ./*; do ln -s file /bin/$file; done'
 WORKDIR /
 CMD ["/bin/bash"]
 
@@ -22,8 +20,6 @@ RUN apt update
 RUN apt install -y clang
 RUN rustup target add x86_64-apple-darwin
 COPY --from=osxcross /osxcross /osxcross
-WORKDIR /osxcross/target/bin
-RUN bash -c 'for file in ./*; do ln -s file /bin/$file; done'
 WORKDIR /
 CMD ["/bin/bash"]
 
@@ -32,7 +28,5 @@ RUN apt update
 RUN apt install -y clang
 RUN rustup target add x86_64-apple-darwin
 COPY --from=osxcross /osxcross /osxcross
-WORKDIR /osxcross/target/bin
-RUN bash -c 'for file in ./*; do ln -s file /bin/$file; done'
 WORKDIR /
 CMD ["/bin/bash"]
